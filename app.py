@@ -11,7 +11,6 @@ from plotly.offline import plot
 from dash import Dash, dcc, html, Input, Output
 from datetime import date
 import json
-from tqdm import tqdm
 import requests
 import holidays
 
