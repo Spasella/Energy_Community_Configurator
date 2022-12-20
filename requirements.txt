@@ -30,7 +30,7 @@ MarkupSafe==2.1.1
 nodeenv==1.7.0
 numpy==1.19.4
 packaging==21.0
-pandas==1.5.2
+pandas==1.2.1
 pandasql==0.7.3
 pipreqs==0.4.11
 platformdirs==2.6.0
@@ -52,7 +52,6 @@ SQLAlchemy==1.4.45
 tenacity==8.1.0
 termcolor==1.1.0
 toml==0.10.2
-tqdm==4.64.1
 urllib3==1.26.13
 virtualenv==20.17.1
 visdcc==0.0.50
