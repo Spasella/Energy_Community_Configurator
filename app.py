@@ -238,10 +238,10 @@ app.layout = dbc.Container([
                     ])
         ],),
     ]),
-    dbc.Row([
-        dbc.Col([dcc.Graph(id='graph_radar_weekdays')], xl=6, lg=6, md=6, sm=6, xs=6),
-        dbc.Col([dcc.Graph(id='graph_radar_month')], xl=6, lg=6, md=6, sm=6, xs=6),
-    ], style= {'margin-top':'20px', 'margin-bot':'10px', 'height':'auto'}),
+    #dbc.Row([
+        #dbc.Col([dcc.Graph(id='graph_radar_weekdays')], xl=6, lg=6, md=6, sm=6, xs=6),
+        #dbc.Col([dcc.Graph(id='graph_radar_month')], xl=6, lg=6, md=6, sm=6, xs=6),
+    #], style= {'margin-top':'20px', 'margin-bot':'10px', 'height':'auto'}),
     #dbc.Row([
         #dbc.Col([dcc.Graph(id='linebar_monthly')], xl=12, lg=12, md=12, sm=12, xs=12)
     #],style= {'margin-top':'20px', 'margin-bot':'10px', 'margin-right':'3px'})
@@ -313,91 +313,13 @@ def update_linebar_chart(value_1, value_2, value_3):
 
 #----------------------------------------------------
 
-#2- RADAR WEEKAYS CALLBACK
-@app.callback(
-    Output('graph_radar_weekdays', 'figure'),
-    [Input('_dropdown_stabilimento_', 'value')]
-)
-def update_figure_radar_chart_1(value):
-    filtered_data = radar_chart_stab_df[radar_chart_stab_df["stabilimento"].isin(value)]
-
-    fig = px.line_polar(filtered_data, r="consumi_kw_h", theta="giorno_sett", color="hour_group",
-                        custom_data=['stabilimento'],
-                        color_discrete_sequence=px.colors.sequential.Blues_r,
-                        template="plotly_dark",
-                        hover_data=['consumi_kw_h'],
-                        labels={'consumi_kw_h':'Consumi in KW/H'}
-                      )
-
-    fig.update_traces(fill='toself')
-    fig.layout.title.text = "Weekday Consumption by hours"
-    fig.update_layout(legend=dict(orientation="h"))
-    #plot(fig)
-    return fig
-#----------------------------------------------------
-
-#3- RADAR MONTH CALLBACK
-@app.callback(
-    Output('graph_radar_month', 'figure'),
-    [Input('_dropdown_stabilimento_', 'value')]
-)
-def update_figure_radar_chart_2(value):
-    filtered_data = radar_chart_2_df[radar_chart_2_df["stabilimento"].isin(value)]
-
-    fig = px.bar_polar(filtered_data, r="consumi_kw_h", theta="mese", color="hour_group",
-                       color_discrete_sequence= px.colors.sequential.Plasma_r,
-                       custom_data=['stabilimento'],
-                       hover_data=['consumi_kw_h'],
-
-                       labels={'consumi_kw_h': 'Consumi in KW/H'},
-
-                       title="Consumo mensile per gruppi di ore",
-                       template = "plotly_dark",
-
-                      )
-    fig.update_layout(legend=dict(orientation="h"))
-
-    return fig
-
 
 #----------------------------------------------------
 
 
 
 #----------------------------------------------------
-#5 - LINEBAR MONTHLY CALLBACK
 
-@app.callback(
-Output('linebar_monthly', 'figure'),
-    [Input('_dropdown_stabilimento_', 'value'),
-     Input('_dropdown_fascia_oraria_', 'value'),
-     Input('_dropdown_anno_', 'value')
-     #Input('_RangeSlider_months_', 'value')
-     ]
-)
-def update_linebar_chart(value_1, value_2, value_3):
-    filtered_data_1 = linebar_monthly_df[linebar_monthly_df["stabilimento"].isin(value_1)]
-    filtered_data_2 = filtered_data_1[filtered_data_1['fascia_oraria'].isin(value_2)]
-    filtered_data_3 = filtered_data_2[filtered_data_2['anno'].isin(value_3)]
-    #filtered_data_4 = filtered_data_3[filtered_data_3['mese'].isin(value_4)]
-
-    fig = px.bar(filtered_data_3, x='mese', y='consumi_kw_h',
-                 hover_data=['consumi_kw_h', 'fascia_oraria'], color='stabilimento',
-                 color_discrete_sequence=['#0d47a1', '#2962ff', '#e3f2fd'],
-                 custom_data=['stabilimento', 'fascia_oraria', 'anno'],
-                 labels={'consumi_kw_h': 'Consumi in KW/h',
-                         'fascia_oraria': 'Fascia Oraria'},
-
-                 height=400)
-    fig.update_layout(template='plotly_dark')
-    fig.update_layout(legend=dict(
-        orientation="h",
-        yanchor="bottom",
-        y=1.02,
-        xanchor="right",
-        x=1
-    ))
-    return fig
 
 
 
