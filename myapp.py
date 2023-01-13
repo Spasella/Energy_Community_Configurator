@@ -191,5 +191,5 @@ def update_linebar_chart(start_date, end_date):
 #RUNNING SPACE
 #========================
 if __name__ == '__main__':
-    app.run_server(debug = False)
+    app.run_server(host='0.0.0.0', port=8000)
 
