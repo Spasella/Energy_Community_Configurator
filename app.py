@@ -12,9 +12,7 @@ from dash import Dash, dcc, html, Input, Output, dash_table
 from plotly.subplots import make_subplots
 from datetime import date
 import json
-from tqdm import tqdm
 import requests
-import holidays
 import random
 import numpy as np
 from datetime import datetime
