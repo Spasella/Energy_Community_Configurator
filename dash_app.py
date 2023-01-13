@@ -115,7 +115,7 @@ radar_chart_2_df = ps.sqldf(radar_chart_2_query, locals())
 
 
 
-#2 - LINEBAR MONTHLY DATASET
+#2 - LINEBAR MONTHLY DATASE
 #---------------
 linebar_monthly_query = '''
 SELECT anno, mese, fascia_oraria, stabilimento, ROUND(SUM(consumi_kw_h), 2) as consumi_kw_h
