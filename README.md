@@ -1,4 +1,5 @@
-# Project Name: Energy Consumption and Production Dashboard
+# Combine multiple consuptio profiles and select the solar panel needed
+https://cer-configurator.onrender.com
 This project is a web-based dashboard that provides visualizations and analysis of energy consumption and production data. It utilizes the Dash framework for creating interactive data visualization applications.
 
 # Project Overview
